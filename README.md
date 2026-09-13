@@ -2,6 +2,8 @@
 ### AI-Assisted Evidence Engine for Investment Tip Verification
 **Hackathon Track:** Agents for Humans — Everyday Agents / FinTech & Commerce
 
+[![🚀 Live Demo](https://img.shields.io/badge/🚀%20Live%20Demo-TipCheck-00C7B7?style=for-the-badge)](https://investment-risk-analyzer.netlify.app/)
+
 > *"We don't ask AI if it's a scam. We check if the SEBI registration is even real."*
 
 ---
