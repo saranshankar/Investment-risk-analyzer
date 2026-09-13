@@ -1,0 +1,40 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "FinalVerdict",
+  "type": "object",
+  "properties": {
+    "analysis_id": { "type": "string", "format": "uuid" },
+    "verdict_bucket": {
+      "type": "string",
+      "enum": ["LOW_CONCERN", "NEEDS_VERIFICATION", "HIGH_RISK_INDICATORS"]
+    },
+    "evidence": { "$ref": "evidence.json#" },
+    "explanation": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "item": { "type": "string" },
+          "type": {
+            "type": "string",
+            "enum": ["verified_fact", "extracted_claim", "rule_signal", "ai_explanation"]
+          },
+          "text": { "type": "string" }
+        },
+        "required": ["item", "type", "text"]
+      }
+    },
+    "disclaimer": { "type": "string" },
+    "registry_snapshot_date": { "type": ["string", "null"] },
+    "created_at": { "type": "string", "format": "date-time" }
+  },
+  "required": [
+    "analysis_id",
+    "verdict_bucket",
+    "evidence",
+    "explanation",
+    "disclaimer",
+    "registry_snapshot_date",
+    "created_at"
+  ]
+}

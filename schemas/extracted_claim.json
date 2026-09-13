@@ -1,0 +1,80 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ExtractedClaim",
+  "description": "Structured claims extracted from raw investment tip text or screenshot",
+  "type": "object",
+  "properties": {
+    "claim_id": { "type": "string", "format": "uuid" },
+    "source_type": { "type": "string", "enum": ["text", "screenshot"] },
+    "raw_text_hash": { "type": "string" },
+    "entity_name_claimed": { "type": ["string", "null"] },
+    "registration_number_claimed": { "type": ["string", "null"] },
+    "registration_type_claimed": { "type": ["string", "null"] },
+    "claimed_returns": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "text": { "type": "string" },
+          "type": { "type": "string", "enum": ["guaranteed", "projected", "unspecified"] }
+        },
+        "required": ["text", "type"]
+      }
+    },
+    "investment_product": { "type": ["string", "null"] },
+    "urgency_language": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "exclusivity_language": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "payment_requests": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "text": { "type": "string" },
+          "method_hint": { "type": ["string", "null"] }
+        },
+        "required": ["text"]
+      }
+    },
+    "contact_info": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": { "type": "string", "enum": ["phone", "email", "handle", "link"] },
+          "value": { "type": "string" }
+        },
+        "required": ["type", "value"]
+      }
+    },
+    "links": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "language_detected": { "type": "string", "enum": ["en", "hi", "hinglish", "other"] },
+    "extraction_confidence": { "type": "number", "minimum": 0.0, "maximum": 1.0 },
+    "extraction_notes": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  },
+  "required": [
+    "claim_id",
+    "source_type",
+    "raw_text_hash",
+    "claimed_returns",
+    "urgency_language",
+    "exclusivity_language",
+    "payment_requests",
+    "contact_info",
+    "links",
+    "language_detected",
+    "extraction_confidence",
+    "extraction_notes"
+  ]
+}

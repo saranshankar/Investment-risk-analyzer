@@ -1,0 +1,13 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "RegistryRecord",
+  "type": "object",
+  "properties": {
+    "registration_number": { "type": "string" },
+    "registered_entity_name": { "type": "string" },
+    "registration_type": { "type": "string" },
+    "status": { "type": "string", "enum": ["active", "inactive", "not_found"] },
+    "registry_snapshot_date": { "type": "string", "format": "date" }
+  },
+  "required": ["registration_number", "registered_entity_name", "registration_type", "status", "registry_snapshot_date"]
+}

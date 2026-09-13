@@ -1,0 +1,17 @@
+# Core Web API & Server
+fastapi>=0.110.0
+uvicorn[standard]>=0.28.0
+pydantic>=2.6.0
+python-multipart>=0.0.9
+
+# Parsing, Validation & Image Processing
+pillow>=10.2.0
+pyyaml>=6.0.1
+jsonschema>=4.21.1
+
+# Automated Testing
+pytest>=8.0.0
+httpx>=0.27.0
+
+# Optional AWS Production Integration (Bedrock / Textract / DynamoDB)
+boto3>=1.34.0

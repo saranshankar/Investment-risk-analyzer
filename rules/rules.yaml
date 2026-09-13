@@ -1,0 +1,182 @@
+version: "1.0"
+bucket_thresholds:
+  low_concern_max: 19
+  needs_verification_max: 49
+  high_risk_min: 50
+
+override_rules:
+  - id: "OVERRIDE-REG01-FIN-PAY"
+    condition: "REG-01 and (any FIN or any PAY)"
+    forced_bucket: "HIGH_RISK_INDICATORS"
+    explanation: "Unregistered claimed entity combined with financial guarantee or upfront payment demand triggers mandatory High-Risk Indicators."
+
+rules:
+  - id: "REG-01"
+    category: "regulatory"
+    name: "Registration Not Found"
+    description: "Registration number claimed in the message could not be found in the SEBI registry snapshot."
+    severity: "high"
+    score: 30
+
+  - id: "REG-02"
+    category: "regulatory"
+    name: "Registration Inactive"
+    description: "Registration number found in SEBI registry, but status is listed as Inactive, Suspended, or Cancelled."
+    severity: "high"
+    score: 25
+
+  - id: "REG-03"
+    category: "regulatory"
+    name: "Registry Unavailable"
+    description: "SEBI registry service was temporarily unreachable during lookup."
+    severity: "low"
+    score: 0
+
+  - id: "REG-04"
+    category: "regulatory"
+    name: "Missing Registration Number"
+    description: "Financial advisory claims or tips provided without stating a mandatory SEBI registration number."
+    severity: "medium"
+    score: 20
+
+  - id: "ID-01"
+    category: "identity"
+    name: "Entity Name Mismatch"
+    description: "Claimed entity name does not match the legal name officially registered under this SEBI registration number."
+    severity: "high"
+    score: 30
+
+  - id: "ID-02"
+    category: "identity"
+    name: "Entity Name Partial Match"
+    description: "Claimed entity name is a partial or approximate match (e.g. abbreviation or missing legal suffix) to the registered name."
+    severity: "medium"
+    score: 10
+
+  - id: "ID-03"
+    category: "identity"
+    name: "Cross-Registration Swapping"
+    description: "Message references the registered name or credential of a different known entity."
+    severity: "high"
+    score: 25
+
+  - id: "FIN-01"
+    category: "financial"
+    name: "Guaranteed Return Language"
+    description: "Message guarantees fixed, assured, or risk-free investment returns (prohibited under SEBI regulations)."
+    severity: "high"
+    score: 20
+    match_phrases:
+      - "guaranteed"
+      - "assured return"
+      - "100% profit"
+      - "fixed return"
+      - "zero risk"
+      - "pakka return"
+      - "no loss"
+      - "100% sure"
+      - "double your money"
+
+  - id: "FIN-02"
+    category: "financial"
+    name: "Unrealistic Return Magnitude"
+    description: "Return promises exceed standard market benchmarks (>25% monthly or >100% annual promise)."
+    severity: "high"
+    score: 20
+
+  - id: "FIN-03"
+    category: "financial"
+    name: "Unverifiable Past Performance"
+    description: "Unsubstantiated past performance claims without audited disclosures or historical records."
+    severity: "medium"
+    score: 10
+
+  - id: "PSY-01"
+    category: "psychological"
+    name: "Artificial Urgency"
+    description: "High-pressure tactics attempting to force immediate financial commitment without due diligence."
+    severity: "medium"
+    score: 10
+    match_phrases:
+      - "today only"
+      - "valid today"
+      - "act now"
+      - "hurry"
+      - "urgent"
+      - "last chance"
+      - "immediate action"
+      - "before 9:15"
+      - "before market open"
+      - "closing soon"
+
+  - id: "PSY-02"
+    category: "psychological"
+    name: "Scarcity & Exclusivity"
+    description: "Claims of secret VIP clubs, restricted slots, or insider circles to induce FOMO."
+    severity: "medium"
+    score: 10
+    match_phrases:
+      - "limited seats"
+      - "vip group"
+      - "exclusive group"
+      - "only 10 spots"
+      - "special batch"
+      - "insider"
+      - "private channel"
+
+  - id: "PSY-03"
+    category: "psychological"
+    name: "Social Proof Pressure"
+    description: "Pressure based on alleged group participation or screenshots of huge profits from other members."
+    severity: "low"
+    score: 5
+    match_phrases:
+      - "everyone is earning"
+      - "all members in profit"
+      - "already joined"
+      - "group proof"
+
+  - id: "PAY-01"
+    category: "payment"
+    name: "Upfront Payment Demand"
+    description: "Requests upfront registration fee, tip fee, or profit-sharing deposit before delivering advisory service."
+    severity: "high"
+    score: 20
+
+  - id: "PAY-02"
+    category: "payment"
+    name: "Personal Account or UPI Payment"
+    description: "Requests payment routed to personal UPI IDs, crypto wallets, or non-corporate individual accounts."
+    severity: "high"
+    score: 20
+    match_phrases:
+      - "@okaxis"
+      - "@okicici"
+      - "@oksbi"
+      - "@ybl"
+      - "@paytm"
+      - "gpay"
+      - "phonepe"
+      - "personal upi"
+      - "transfer to account"
+
+  - id: "COMM-01"
+    category: "communication"
+    name: "Informal Messaging Channel Only"
+    description: "Operations conducted exclusively via anonymous Telegram/WhatsApp handles without an official corporate email or domain."
+    severity: "low"
+    score: 5
+
+  - id: "COMM-02"
+    category: "communication"
+    name: "Shortened or Unverified Link"
+    description: "Contains shortened URLs, direct invite links, or unverified domain redirects."
+    severity: "medium"
+    score: 10
+    match_domains:
+      - "bit.ly"
+      - "tinyurl.com"
+      - "t.me"
+      - "wa.me"
+      - "chat.whatsapp.com"
+      - "is.gd"

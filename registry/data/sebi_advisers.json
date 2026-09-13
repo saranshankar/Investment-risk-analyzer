@@ -1,0 +1,106 @@
+{
+  "snapshot_date": "2026-08-01",
+  "source": "Securities and Exchange Board of India (SEBI) Registered Intermediaries Directory",
+  "records": [
+    {
+      "registration_number": "INA000000037",
+      "registered_entity_name": "Motilal Oswal Financial Services Limited",
+      "registration_type": "Investment Adviser",
+      "status": "active",
+      "city": "Mumbai",
+      "state": "Maharashtra",
+      "valid_until": "Permanent",
+      "snapshot_date": "2026-08-01"
+    },
+    {
+      "registration_number": "INA000008434",
+      "registered_entity_name": "Kotak Investment Advisors Limited",
+      "registration_type": "Investment Adviser",
+      "status": "active",
+      "city": "Mumbai",
+      "state": "Maharashtra",
+      "valid_until": "Permanent",
+      "snapshot_date": "2026-08-01"
+    },
+    {
+      "registration_number": "INA000011538",
+      "registered_entity_name": "HDFC Securities Limited",
+      "registration_type": "Investment Adviser",
+      "status": "active",
+      "city": "Mumbai",
+      "state": "Maharashtra",
+      "valid_until": "Permanent",
+      "snapshot_date": "2026-08-01"
+    },
+    {
+      "registration_number": "INZ000031633",
+      "registered_entity_name": "Zerodha Broking Limited",
+      "registration_type": "Stock Broker / Intermediary",
+      "status": "active",
+      "city": "Bengaluru",
+      "state": "Karnataka",
+      "valid_until": "Permanent",
+      "snapshot_date": "2026-08-01"
+    },
+    {
+      "registration_number": "INZ000183631",
+      "registered_entity_name": "ICICI Securities Limited",
+      "registration_type": "Stock Broker & Intermediary",
+      "status": "active",
+      "city": "Mumbai",
+      "state": "Maharashtra",
+      "valid_until": "Permanent",
+      "snapshot_date": "2026-08-01"
+    },
+    {
+      "registration_number": "INA200005109",
+      "registered_entity_name": "Capitalmind Financial Services Private Limited",
+      "registration_type": "Investment Adviser",
+      "status": "active",
+      "city": "Bengaluru",
+      "state": "Karnataka",
+      "valid_until": "Permanent",
+      "snapshot_date": "2026-08-01"
+    },
+    {
+      "registration_number": "INA000012345",
+      "registered_entity_name": "Example Capital Advisors Private Limited",
+      "registration_type": "Investment Adviser",
+      "status": "active",
+      "city": "Pune",
+      "state": "Maharashtra",
+      "valid_until": "Permanent",
+      "snapshot_date": "2026-08-01"
+    },
+    {
+      "registration_number": "INA000003421",
+      "registered_entity_name": "Trustline Securities Private Limited",
+      "registration_type": "Investment Adviser",
+      "status": "active",
+      "city": "New Delhi",
+      "state": "Delhi",
+      "valid_until": "Permanent",
+      "snapshot_date": "2026-08-01"
+    },
+    {
+      "registration_number": "INA000099999",
+      "registered_entity_name": "Apex Global Wealth Consultancies LLP",
+      "registration_type": "Investment Adviser",
+      "status": "inactive",
+      "city": "Indore",
+      "state": "Madhya Pradesh",
+      "valid_until": "Suspended on 2025-11-14",
+      "snapshot_date": "2026-08-01"
+    },
+    {
+      "registration_number": "INA000055555",
+      "registered_entity_name": "Quantum Leap Investment Advisors",
+      "registration_type": "Investment Adviser",
+      "status": "inactive",
+      "city": "Jaipur",
+      "state": "Rajasthan",
+      "valid_until": "Cancelled on 2024-06-20",
+      "snapshot_date": "2026-08-01"
+    }
+  ]
+}

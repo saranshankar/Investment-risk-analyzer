@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "VerificationResult",
+  "type": "object",
+  "properties": {
+    "registration_lookup": { "type": "string", "enum": ["found", "not_found", "registry_unavailable", "not_applicable"] },
+    "status_check": { "type": "string", "enum": ["active", "inactive", "unknown"] },
+    "name_match": { "type": "string", "enum": ["match", "partial_match", "mismatch", "not_applicable"] },
+    "name_match_score": { "type": "number", "minimum": 0.0, "maximum": 1.0 },
+    "claimed_name": { "type": ["string", "null"] },
+    "registered_name": { "type": ["string", "null"] },
+    "registry_snapshot_date": { "type": ["string", "null"] }
+  },
+  "required": [
+    "registration_lookup",
+    "status_check",
+    "name_match",
+    "name_match_score",
+    "claimed_name",
+    "registered_name",
+    "registry_snapshot_date"
+  ]
+}

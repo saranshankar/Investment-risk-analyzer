@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "AuditLog",
+  "type": "object",
+  "properties": {
+    "log_id": { "type": "string", "format": "uuid" },
+    "analysis_id": { "type": "string" },
+    "step": {
+      "type": "string",
+      "enum": ["input_validation", "ocr", "extraction", "verification", "rule_engine", "safety_check", "explanation"]
+    },
+    "status": { "type": "string", "enum": ["success", "failure", "retried"] },
+    "duration_ms": { "type": "integer" },
+    "timestamp": { "type": "string", "format": "date-time" },
+    "error_detail": { "type": ["string", "null"] }
+  },
+  "required": ["log_id", "analysis_id", "step", "status", "duration_ms", "timestamp"]
+}

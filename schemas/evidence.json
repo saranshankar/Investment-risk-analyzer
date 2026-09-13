@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Evidence",
+  "type": "object",
+  "properties": {
+    "extracted_claim": { "$ref": "extracted_claim.json#" },
+    "verification_result": { "$ref": "verification_result.json#" },
+    "risk_signals": {
+      "type": "array",
+      "items": { "$ref": "risk_signal.json#" }
+    },
+    "deterministic_score": { "type": "integer" },
+    "verdict_bucket": {
+      "type": "string",
+      "enum": ["LOW_CONCERN", "NEEDS_VERIFICATION", "HIGH_RISK_INDICATORS"]
+    }
+  },
+  "required": [
+    "extracted_claim",
+    "verification_result",
+    "risk_signals",
+    "deterministic_score",
+    "verdict_bucket"
+  ]
+}
